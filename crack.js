@@ -39,33 +39,44 @@ const listua = {
 
 
 
-
 let body = JSON.parse($response.body);
 let url = $request.url;
 
 if (url.includes("offerings") || url.includes("products")) {
   body = {
-    offerings: {
-      current_offering_id: "premium",
-      offerings: [
-        {
-          identifier: "premium",
-          serverDescription: "Premium Unlock",
-          availablePackages: [
-            {
-              identifier: "$rc_lifetime",
-              packageType: "LIFETIME",
-              product: {
-                identifier: "com.app.premium.lifetime",
-                price: 0,
-                currencyCode: "USD",
-                description: "Lifetime Premium Access",
-              }
-            }
-          ]
-        }
-      ]
-    }
+    placements: {
+      fallback_offering_id: "AI Video Offering"
+    },
+    offerings: [
+      {
+        metadata: null,
+        description: "AI Video Offering",
+        identifier: "AI Video Offering",
+        packages: [
+          {
+            platform_product_identifier: "credits_1000",
+            identifier: "Lifetime 1000"
+          },
+          {
+            platform_product_identifier: "credits_3000",
+            identifier: "Lifetime 3000"
+          },
+          {
+            platform_product_identifier: "credits_5000",
+            identifier: "$rc_lifetime"
+          },
+          {
+            platform_product_identifier: "ai_video_weekly",
+            identifier: "$rc_weekly"
+          },
+          {
+            platform_product_identifier: "ai_video_year",
+            identifier: "$rc_annual"
+          }
+        ]
+      }
+    ],
+    current_offering_id: "AI Video Offering"
   };
 }
 
@@ -75,16 +86,16 @@ if (url.includes("subscribers") || url.includes("subscriber_attributes")) {
     request_date: "2025-06-14T00:00:00Z",
     subscriber: {
       entitlements: {
-        premium: {
+        "ai_video": {
           expires_date: "2099-09-09T09:09:09Z",
-          product_identifier: "com.app.premium.lifetime",
+          product_identifier: "credits_5000",
           purchase_date: "2022-02-22T22:22:22Z"
         }
       },
       first_seen: "2021-01-01T00:00:00Z",
       original_app_user_id: "$RCAnonymousID:xxxxxx",
       subscriptions: {
-        "com.app.premium.lifetime": {
+        "credits_5000": {
           billing_issues_detected_at: null,
           expires_date: "2099-09-09T09:09:09Z",
           is_sandbox: false,
@@ -101,9 +112,5 @@ if (url.includes("subscribers") || url.includes("subscriber_attributes")) {
 }
 
 $done({ body: JSON.stringify(body) });
-
-
-
-
 
 
