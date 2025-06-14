@@ -33,8 +33,8 @@ const bundle = {
 
 const listua = {
   'Lightune': { name: 'pro', id: 'Lightune_Pro_Year', cm: 'sja' } ,  //Lightune - AI 
-  'Ai': { name: 'annual', id: 'ai_video_year', cm: 'sja' } ,   //AI Video 
-  'Funswap': { name: 'annual', id: 'funswap_yearly', cm: 'sja' }  //AI Video 
+  'Ai': { name: 'annual', id: 'ai_video_year', cm: 'sjb' } ,   //AI Video 
+  'Funswap': { name: 'annual', id: 'funswap_yearly', cm: 'sjb' }  //AI Video 
 };
 
 
